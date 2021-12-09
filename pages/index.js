@@ -43,7 +43,7 @@ export default function Home({ propForRent, propForSale }) {
         desc="Explore aparment villas and more"
         descTwo="and more"
         buttonText="Explore Buying"
-        linkName="/search?purpose=for-rent"
+        linkName="/search?purpose=for-sale"
         imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/110798997/d9446cee36ba4f839c8fedd0e0b52208"
       />
       <Flex flexWrap="wrap" justifyContent="center">
