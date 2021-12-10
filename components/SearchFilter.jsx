@@ -81,11 +81,11 @@ const SearchFilter = () => {
                     {locationData?.map((data) => (
                         <Box key={location.id}
                             onClick={() => {
-                                searchProperties({ locationExternalIDs: location.externalID });
                                 setShowLocation(false)
                                 setSearchTerm(location.name);
+                                searchProperties({ locationExternalIDs: location.externalID });
                             }} marginTop="2" >
-                            <Text cursor="pointer" bg="gray.200" borderBottom="1px" borderColor="gray.100" p="2" _hover={{backgroundColor="gray.400"}}>
+                            <Text cursor="pointer" bg="gray.200" borderBottom="1px" borderColor="gray.100" p="2"_hover={{backgroundColor:"gray.200"}}>
                                 {data.name}
                             </Text>
                         </Box>
