@@ -24,7 +24,6 @@ const SearchFilter = () => {
                 const data = await fetchApi(`${baseUrl}/auto-complete?query=${searchTerm}`);
                 setLoading(false);
                 setLocationData(data?.hits);
-                setShowLocation(true);
             }
 
             fetchData();
@@ -38,8 +37,8 @@ const SearchFilter = () => {
         const values = getFilterValues(filterValues);
 
         values.forEach((item) => {
-            if(item.value && filterValues?.[item.name])
-            query[item.name] = item.value;
+            if (item.value && filterValues?.[item.name])
+                query[item.name] = item.value;
         })
 
         router.push({
@@ -72,9 +71,10 @@ const SearchFilter = () => {
                 </Button>
                 {showSearch && <Flex flexDirection="column" pos="relative" paddingTop="2">
                     <Flex>
-                        <Input type="text" w="300px" onChange={(e) => setSearchTerm(e.target.value)} placeholder="Search Locations" value={searchTerm} />
-                        <Icon as={MdCancel} pos="absolute" right="5"
-                            top="5" zIndex="100" cursor="pointer" onClick={() => setSearchTerm("")} />
+                        <Input type="text" w="300px" onInput={()=>setShowLocation(true)}
+                        onChange={(e) => setSearchTerm(e.target.value)} placeholder="Search Locations" value={searchTerm} />
+                        {searchTerm !== "" && < Icon as={MdCancel} pos="absolute" right="5"
+                        top="5" zIndex="100" cursor="pointer" onClick={() => setSearchTerm("")} />}
                     </Flex>
                 </Flex>}
                 {loading && <Spinner margin="auto" marginTop="3" />}
@@ -83,10 +83,10 @@ const SearchFilter = () => {
                         <Box key={location.id}
                             onClick={() => {
                                 setShowLocation(false)
-                                setSearchTerm(location.name);
-                                searchProperties({ locationExternalIDs: location.externalID });
+                                setSearchTerm(data.name);
+                                searchProperties({ locationExternalIDs: data.externalID });
                             }} marginTop="2" >
-                            <Text cursor="pointer" bg="gray.200" borderBottom="1px" borderColor="gray.100" p="2"_hover={{backgroundColor:"gray.200"}}>
+                            <Text cursor="pointer" bg="gray.200" borderBottom="1px" borderColor="gray.100" p="2" _hover={{ backgroundColor: "gray.200" }}>
                                 {data.name}
                             </Text>
                         </Box>
